@@ -6,6 +6,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Slider</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -16,10 +20,10 @@
 
     <body class="bg-info">
         <div id="app">
-            <div class="my_container">
-                <div class="mega-wrapper">
-                    <div class="slider-wrapper" tabindex="0">
-                        <div class="item">
+            <div class="my_container"> 
+                <div class="mega-wrapper"> <!-- wrapper for thumbnails and slides -->
+                    <div class="slider-wrapper" tabindex="0"> <!-- slider wrapper -->
+                        <div class="item"> <!-- single lside -->
                             <img :src="slides[activeImage].image"
                                 alt="slides[activeImage].title" />
                             <div class="text">
@@ -29,9 +33,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="thumbs">
-                            <div class="prev" @click="prev()"></div>
-                            <div class="next" @click="next()"></div>
+                        <div class="thumbs"> <!-- thumbnails -->
                             <div class="thumb" v-for="(image, index) in slides"
                                 :class="(index === activeImage ? 'active' : '')">
                                 <img :src="slides[index].image"
@@ -40,10 +42,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="auto_container text-end">
-                        <button class="btn btn-dark w-25 my-3" @click.once="autoSlides()">auto slider</button> 
+                </div>
+                <div class="controls_wrapper d-flex justify-content-between align-items-center bg-dark w-100 p-3">
+                    <div class="arrows d-flex ps-5 d-flex"> <!-- arrows control -->
+                        <div class="mx-5 p-2 rounded-5 text-info" @click="prev()">
+                            <i class="fa-solid fa-chevron-left fa-2xl"></i>
+                        </div>
+                        <div class="mx-5 p-2 rounded-5 text-info" @click="next()">
+                            <i class="fa-solid fa-chevron-right fa-2xl"></i>
+                        </div>
                     </div>
-                     
+                    <!-- autoslider -->
+                    <button class="btn btn-info text-dark fw-bold px-5"
+                        @click.once="autoSlides()">
+                        Auto Slider
+                    </button>  
                 </div>
             </div>
         </div>
