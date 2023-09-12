@@ -63,6 +63,18 @@ createApp({
             }
         },
 
+        thumbShow(index) {
+
+            this.activeImage = index;
+
+        },
+
+        autoSlides() {
+
+            setInterval(this.next, 1500)
+                
+        },
+
     }
 
 }).mount('#app')
