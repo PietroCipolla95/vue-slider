@@ -1,4 +1,3 @@
-
 const { createApp } = Vue
 
 createApp({
@@ -61,7 +60,7 @@ createApp({
                 this.activeImage = this.slides.length - 1;
 
             }
-            
+
         },
 
         thumbShow(index) {
