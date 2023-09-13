@@ -21,11 +21,11 @@
     <body class="bg-info">
         <div id="app">
             <div class="my_container"> 
-                <div class="mega-wrapper"> <!-- wrapper for thumbnails and slides -->
+                <div class="mega-wrapper" @mouseover="stop" @mouseleave="autoSlides"> <!-- wrapper for thumbnails and slides -->
                     <div class="slider-wrapper" tabindex="0"> <!-- slider wrapper -->
                         <div class="item"> <!-- single lside -->
                             <img :src="slides[activeImage].image"
-                                alt="slides[activeImage].title" />
+                                :alt="slides[activeImage].title" />
                             <div class="text">
                                 <h3>{{slides[activeImage].title}}</h3>
                                 <p>
@@ -37,26 +37,23 @@
                             <div class="thumb" v-for="(image, index) in slides"
                                 :class="(index === activeImage ? 'active' : '')">
                                 <img :src="slides[index].image"
-                                    alt="slides[activeImage].title"
+                                    :alt="slides[activeImage].title"
                                     @click="thumbShow(index)" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="controls_wrapper d-flex justify-content-between align-items-center bg-dark w-100 p-3">
-                    <div class="arrows d-flex ps-5 d-flex"> <!-- arrows control -->
+                    <div class="arrow_prev d-flex ps-5 d-flex"> <!-- arrows control prev-->
                         <div class="mx-5 p-2 rounded-5 text-info" @click="prev()">
                             <i class="fa-solid fa-chevron-left fa-2xl"></i>
                         </div>
+                    </div>
+                    <div class="arrow_next d-flex ps-5 d-flex"> <!-- arrows control next-->
                         <div class="mx-5 p-2 rounded-5 text-info" @click="next()">
                             <i class="fa-solid fa-chevron-right fa-2xl"></i>
                         </div>
                     </div>
-                    <!-- autoslider -->
-                    <button class="btn btn-info text-dark fw-bold px-5"
-                        @click.once="autoSlides()">
-                        Auto Slider
-                    </button>  
                 </div>
             </div>
         </div>

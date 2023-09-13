@@ -71,9 +71,21 @@ createApp({
 
         autoSlides() {
 
-            setInterval(this.next, 1500)
+           this.intervalAuto = setInterval(this.next, 1500)
                 
         },
+
+        stop() {
+
+            clearInterval(this.intervalAuto)
+
+        }
+
+    },
+
+    mounted() {
+
+        this.autoSlides();
 
     }
 
